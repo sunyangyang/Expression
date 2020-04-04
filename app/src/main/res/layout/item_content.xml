@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/layout_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp">
+    <ImageView
+        android:scaleType="centerCrop"
+        android:id="@+id/img_avatar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/justice"
+        android:layout_marginRight="10dp"/>
+    <TextView
+        android:padding="10dp"
+        android:textColor="@android:color/white"
+        android:text="此处显示语音文字此处显示语音文字此处显示语音文字此处显示语音文字此处显示语音文字此处显示语音文字此处显示语音文字此处显示语音文字此处显示语音文字此处显示语音文字此处显示语音文字此处显示语音文字此处显示语音文字"
+        android:id="@+id/tv_content"
+        android:textSize="16dp"
+        android:maxWidth="250dp"
+        android:background="@drawable/bg_text_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:scaleType="centerCrop"
+        android:id="@+id/img_avatar_right"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/freedom"
+        android:layout_marginLeft="10dp"
+        />
+</LinearLayout>

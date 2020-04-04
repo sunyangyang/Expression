@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/voice_cancel_ll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_voice_chat"
+    android:orientation="horizontal"
+    android:visibility="gone">
+
+    <ImageView
+        android:layout_width="23dp"
+        android:layout_height="18dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="48dp"
+        android:src="@drawable/ic_icon_chat_voice_cancel" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="7dp"
+        android:text="取消"
+        android:textColor="@android:color/white"
+        android:textSize="16dp" />
+</LinearLayout>
