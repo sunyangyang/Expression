@@ -73,6 +73,8 @@ public class MainActivity extends AppCompatActivity implements ContentClickCallb
     private ContentAdapter mAdapter;
     private LinearLayoutManager manager;
 
+    private boolean isEnd = false;//防止播放回调和loop回调时间差问题
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,8 +108,8 @@ public class MainActivity extends AppCompatActivity implements ContentClickCallb
                     @Override
                     public void onAnimationCompleted(int loopNumber) {
                         Log.e("XXXXX", "initStart onAnimationCompleted");
-                        initLoop(expression);
                         status = LOOP;
+                        initLoop(expression);
                         gifStart.stop();
                         imageView.setImageDrawable(gifLoop);
                         gifLoop.start();
@@ -131,7 +133,9 @@ public class MainActivity extends AppCompatActivity implements ContentClickCallb
                     @Override
                     public void onAnimationCompleted(int loopNumber) {
                         Log.e("XXXXX", "initLoop onAnimationCompleted");
-                        if (status == END) {
+                        if (isEnd) {
+                            isEnd = false;
+                            status = END;
                             initEnd(expression);
                             gifLoop.stop();
                             imageView.setImageDrawable(gifEnd);
@@ -224,10 +228,6 @@ public class MainActivity extends AppCompatActivity implements ContentClickCallb
                 @Override
                 public void onAnimationCompleted(int loopNumber) {
                     if (status == START) {
-                        initStart(mExpressionPosition);
-                        gifNormal.stop();
-                        imageView.setImageDrawable(gifStart);
-                        gifStart.start();
                         if (!F2AudioManager.getInstance().isPlaying()) {
                             F2AudioManager.getInstance().play(mPath, new MediaPlayerManager.PlayingListener() {
                                 @Override
@@ -237,10 +237,15 @@ public class MainActivity extends AppCompatActivity implements ContentClickCallb
 
                                 @Override
                                 public void onComplete() {
-                                    status = END;
+                                    Log.e("XXXXX", "play end");
+                                    isEnd = true;
                                 }
                             });
                         }
+                        initStart(mExpressionPosition);
+                        gifNormal.stop();
+                        imageView.setImageDrawable(gifStart);
+                        gifStart.start();
                     }
                 }
             };
